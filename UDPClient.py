@@ -1,17 +1,22 @@
 import socket
 
-# Create a UDP socket
-sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+def main():
+    # Create a UDP socket
+    udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-# Server address and port
-server_address = ('localhost', 12345)
+    # Bind the socket to a specific IP address and port
+    server_address = ('localhost', 12345)
 
-while True:
-    message = input('Enter a message to send: ')
+    # Send a message to the server
+    while True:
+        # Prompt the user to enter a message
+        message = input('Enter a message to send: ')
 
-    # Send the message to the server
-    sock.sendto(message.encode(), server_address)
+        # Encode the message as bytes and send it to the server
+        udp_socket.sendto(message.encode(), server_address)
 
-    # Wait for a response from the server
-    data, _ = sock.recvfrom(4096)
-    print(f'Response from server: {data.decode()}')
+        # Receive a message from the server
+        data, _ = udp_socket.recvfrom(4096)
+
+if __name__ == "__main__":
+    main()
