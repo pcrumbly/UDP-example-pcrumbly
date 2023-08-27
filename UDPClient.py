@@ -1,6 +1,18 @@
 import socket
 
 def main():
+    """
+    Creates a UDP socket and binds it to a specific IP address and port.
+    Continuously prompts the user to enter a message, encodes it as bytes,
+    and sends it to a server using the socket. Then, receives a message
+    from the server and prints it.
+
+    Parameters:
+        None
+
+    Returns:
+        None
+    """
     # Create a UDP socket
     udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
@@ -17,6 +29,7 @@ def main():
 
         # Receive a message from the server
         data, _ = udp_socket.recvfrom(4096)
+        print(f'Received message: {data.decode()}')
 
 if __name__ == "__main__":
     main()

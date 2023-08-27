@@ -13,6 +13,7 @@ def main():
     sock.bind(server_address)
 
     while True:
+        # Wait for a message to be received
         print('Waiting for a message...')
         data, address = sock.recvfrom(4096)
         print(f'Received message: {data.decode()}')
